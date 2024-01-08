@@ -55,5 +55,18 @@ In order to access the body of a request, we need to add some boilerplate middle
 !! Express works top => down !!
 
 
+Important Request Object properties
+    req.body
+        Where the request body content can be found
+        Requires app.use(express.json()) global middleware
+    req.params
+        Dynamic piece of the path
+        Use a ":" in the path to signify a param
+    req.query
+        Dynamic piece of the URL
+        Starts with a "?" in the URL
+
+    The values passed into params and queries are always strings
+
 
 */
