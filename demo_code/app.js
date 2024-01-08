@@ -1,8 +1,14 @@
 const express = require('express');
 const app = express();
 
-app.get('/test', (req, res) => {
+app.use(express.json());
+
+app.get(['/test', '/status'], (req, res) => {
     res.send('Hello from your first Express API!')
+})
+
+app.post('/create', (req, res) => {
+    console.log(req.body)
 })
 
 

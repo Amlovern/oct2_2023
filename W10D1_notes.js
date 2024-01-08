@@ -30,10 +30,29 @@ Steps to start with Express
         Listen to a port (start the server)
 
 
+Route Handlers
+    App object methods:
+        get, post, put/patch, delete, all, use
+    Request path
+        string, array of strings, regular expression, array of RegEx, array of strings and RegEx
+    Middleware
+        Series of callback functions
+    Response methods
+        send (used for plain text or JSON)
+            Will be almost exclusively used for sending plain text
+        json (will always send JSON)
+            Set the headers and formatting for us
+        
+        
+        render
+        redirect
 
+app.<method>(<path>, <middleware>, (request, response) => { reponse })
 
+In order to access the body of a request, we need to add some boilerplate middleware to the top of our app.js file
+    app.use(express.json())
 
-
+!! Express works top => down !!
 
 
 
