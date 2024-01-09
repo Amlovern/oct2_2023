@@ -32,4 +32,20 @@ Error Handling Middleware
     We setup an error handling middleware to DRY up our code and it makes our code more readable.
 
 
+Routers
+    An extension of our app object
+    Start by creating a routes folder to hold all of our routers
+
+    Router object behaves like the app obj in many ways, but not all
+        For example, the router object cannot listen to a port, but it still has all of our methods
+
+    We need to connect the router to the app
+        First we need to export the router
+            module.exports = router;
+        Then we need to import that router into our app.js file
+            const routerName = require('./routes/router');
+        Finally, we have to tell Express to use that router
+            app.use(routerName);
+        Optionally, we can add a prefix string to the app.use to ensure that only related requests hit the router
+
 */

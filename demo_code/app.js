@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const actorsRouter = require('./routes/actors');
 
 app.use(express.json());
 
@@ -31,6 +32,8 @@ const checkUserInput = (req, res, next) => {
 
 app.use('/actors', printPath);
 
+app.use('/actors', actorsRouter);
+
 app.get(['/test', '/status'], [printPath, checkUserInput], (_req, res) => {
     res.send('Hello from your first Express API!')
 })
@@ -43,18 +46,18 @@ app.post('/create', checkUserInput, (req, res) => {
     res.json(req.body)
 })
 
-app.get('/actors', (err, req, res, next) => {
-    console.log('inside /actors endpoint')
-    res.send('actors endpoint')
-})
+// app.get('/actors', (err, req, res, next) => {
+//     console.log('inside /actors endpoint')
+//     res.send('actors endpoint')
+// })
 
-app.get('/actors/:actorId/movies/:movieId', (req, res) => {
-    res.json(req.params)
-})
+// app.get('/actors/:actorId/movies/:movieId', (req, res) => {
+//     res.json(req.params)
+// })
 
-app.get('/actors/*', (req, res) => {
-    res.send('actors catch all')
-})
+// app.get('/actors/*', (req, res) => {
+//     res.send('actors catch all')
+// })
 
 app.get('/search', (req, res) => {
     res.json(req.query)
