@@ -21,11 +21,13 @@ const checkUserInput = (req, res, next) => {
     res.status(400).send('Please include a stuff property.')
 };
 
-app.use((req, res, next) => {
-    console.log('error test');
-    const error = 'There was an error :(';
-    next(error);
-})
+// app.use((req, res, next) => {
+//     console.log('error test');
+//     const error = new Error('There was an error :(');
+//     // const error = 'There was an error :(';
+//     error.statusCode = 401;
+//     next(error);
+// })
 
 app.use('/actors', printPath);
 
@@ -58,11 +60,28 @@ app.get('/search', (req, res) => {
     res.json(req.query)
 })
 
+// Custom 404 Error Middleware
+app.use((req, res, next) => {
+    const notFoundErr = new Error(`${req.path} not found.`);
+    notFoundErr.statusCode = 404;
+    next(notFoundErr);
+});
+
 // Error Handling Middleware
 app.use((err, req, res, next) => {
     console.log(err);
-    res.send(err)
+    const status = err.statusCode || 500;
+    // let status;
+    // if (err.statusCode) {
+    //     status = err.statusCode
+    // } else {
+    //     status = 500
+    // }
+    res.status(status);
+    res.json({
+        message: err.message || 'Something went wrong...',
+        status
+    })
 });
-
 
 app.listen(8000, () => console.log('Listening on port 8000...'))
