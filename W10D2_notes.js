@@ -22,4 +22,14 @@ When anything is passed into next, Express behavior changes a lot
         This means that even if the route handler has 4 params and matches the path, Express will not enter that endpoint
 
 
+Error Handling Middleware
+    Takes in the 4th arg (err)
+    Generally at the end of the pipeline so that nothing is skipped and it can catch all errors
+    Anytime we generate a new error, we need to add a statusCode property to that new Error
+    We also have to set the res status code in our error handling middleware
+        ! Note that we use res.status(<status code>) instead of res.status = <status code>
+
+    We setup an error handling middleware to DRY up our code and it makes our code more readable.
+
+
 */
