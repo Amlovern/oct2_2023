@@ -48,4 +48,36 @@ Routers
             app.use(routerName);
         Optionally, we can add a prefix string to the app.use to ensure that only related requests hit the router
 
+
+Environment Variables
+    There are a few common environments that we will work in
+        Production
+        Development (dev)
+        Testing - underutilized
+            A way to mimic the production environment locally so that we can test changes without interferring with user experience.
+    What's the point?
+        To handle the differences between the different environments
+        They are used to obscure sensitive data
+    To access an environment variable:
+        process.env.VARIABLENAME
+    A few ways to setup our environment variables
+        Through the CLI
+            This can be really annoying to type out every time
+        Adding them to our script in package.json
+            This defeats the purpose since we are pushing our package.json to Github
+        Creating a .env file
+            !! We must add .env to our .gitignore
+            We need to make sure that our .env file is on the same level as our package.json file in the file structure
+            To access variables in our .env from our app, we have to install a couple npm packages
+                npm install dotenv
+                npm install dotenv-cli //This allows us to access our .env from CLI
+            Next, we have to add some boilerplate code to our app.js
+                It is important that this is at the top of the file so that every aspect of our application has access to our env variables
+                require('dotenv').config()
+            Env variables that have a value that is longer than a single word need "" if they are in the CLI, but not if they are in the .env file
+
+
+
+
+
 */
