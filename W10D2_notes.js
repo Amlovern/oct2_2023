@@ -76,8 +76,4 @@ Environment Variables
                 require('dotenv').config()
             Env variables that have a value that is longer than a single word need "" if they are in the CLI, but not if they are in the .env file
 
-
-
-
-
 */
