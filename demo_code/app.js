@@ -3,7 +3,7 @@ const app = express();
 
 app.use(express.json());
 
-app.get(['/test', '/status'], (req, res) => {
+app.get(['/test', '/status'], (_req, res) => {
     res.send('Hello from your first Express API!')
 })
 

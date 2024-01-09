@@ -10,7 +10,9 @@ app.use(express.json());
  *     Route: /version
  *     Response (Text): "1.0.0"
  */
-// Your code here 
+app.get('/version', (req, res) => {
+    res.send('1.0.0')
+}) 
 
 /**
  *  Basic Phase 2 - Route param and JSON response
@@ -28,7 +30,21 @@ app.use(express.json());
  *  Hint: Use your name, birth date and favorite movies (as strings in the code)
  *  combined with the id sent as a route parameter in the url
  */
-// Your code here 
+app.get('/viewers/:id', (req, res) => {
+    const id = req.params.id;
+    res.json({
+        id: req.params.id,
+        // id, // Same as id: id => syntantic sugar
+        firstName: "Anthony",
+        lastName: "Lovern",
+        birthDate: '07/31/1992',
+        favoriteMovies: [
+            'Deadpool',
+            'Hercules',
+            'Kiki\'s Delivery Service'
+        ]
+    })
+}) 
 
 /** Basic Phase 3 - Query params in URL
  *      Method: GET
@@ -47,7 +63,13 @@ app.use(express.json());
  *          message required
  *          message required
  */
-// Your code here 
+app.get('/info', (req, res) => {
+    const message = req.query.message;
+    if (!message) {
+        return res.send('message required')
+    };
+    res.send(message)
+})
 
 /**
  *  IMPORTANT: Scroll to the top for basic phases.
@@ -102,7 +124,7 @@ app.use(express.json());
 
 // DO NOT EDIT - Set port and listener
 if (require.main === module) {
-    const port = 8000;
+    const port = 5050;
     app.listen(port, () => console.log('Server is listening on port', port));
 } else {
     module.exports = app;
