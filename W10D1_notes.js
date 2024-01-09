@@ -68,5 +68,7 @@ Important Request Object properties
 
     The values passed into params and queries are always strings
 
+    Important to note that routes should be in order of most specific => least specific
+
 
 */
