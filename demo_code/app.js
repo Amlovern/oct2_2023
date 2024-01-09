@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
+
 const actorsRouter = require('./routes/actors');
 
 app.use(express.json());
@@ -61,6 +63,11 @@ app.post('/create', checkUserInput, (req, res) => {
 
 app.get('/search', (req, res) => {
     res.json(req.query)
+})
+
+app.get('/environment', (req, res) => {
+    console.log(process.env);
+    res.json(process.env.MESSAGE);
 })
 
 // Custom 404 Error Middleware
