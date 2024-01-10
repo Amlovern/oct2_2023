@@ -61,7 +61,11 @@ All queries need at least 2 statements: SELECT and FROM
 We can do more than that though
     WHERE - Allows us to filter or target specific values or sets of values
 
-
+Deleting and Updating data in the DB
+    Delete - DELETE FROM <table name> WHERE <condition>;
+        Note that if we leave off the WHERE clause, it will delete all of the data from that table, and it will NOT ask for confirmation
+    Updating - UPDATE <table name> SET <column name> = <value> WHERE <condition>;
+        Again, the WHERE clause is not required. If we leave it off, it will update every record in the table to have that updated value.
 
 
 */
