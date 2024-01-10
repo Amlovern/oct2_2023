@@ -53,6 +53,13 @@ For apostrophes, we use 2 single quotation marks
 
 We can run ".headers on" and ".mode column" to make our queries easier to read
 
+Querying the DB
+All queries need at least 2 statements: SELECT and FROM
+    SELECT - What columns do we want?
+    FROM - What table are we querying?
+
+We can do more than that though
+    WHERE - Allows us to filter or target specific values or sets of values
 
 
 
