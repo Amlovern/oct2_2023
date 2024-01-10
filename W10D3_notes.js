@@ -43,6 +43,16 @@ CREATE TABLE <table name> (
 
 Drop a table using DROP TABLE <table name>;
 
+Inserting data into a DB
+    INSERT INTO <table name> (LIST OF COLUMNS WE ARE ADDING DATA FOR)
+    VALUES
+    <comma separated list of seeds>
+SQL prefers single quotes, but can allow for double quotes. NO back ticks!
+For apostrophes, we use 2 single quotation marks
+    i.e. 'Kiki''s Delivery Service'
+
+We can run ".headers on" and ".mode column" to make our queries easier to read
+
 
 
 
