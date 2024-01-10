@@ -24,6 +24,25 @@ With SQL, we MUST end our lines with a ";"
 We can create SQL files for us to write SQL commands in
     In sqlite CLI, we run the ".read <file name>" command to run the commands in that file
 
+All of our SQL commands will be in all caps
+
+
+Notes for creating tables:
+    table and column names are lowercase and snake_case
+    tables are plural
+    The UNIQUE constraint enforces that we don't add duplicates in the column
+    The NOT NULL constraint enforces that the column isn't empty (null)
+    SQL does not like trailing commas
+    We must add the semi-colon after we are done
+
+CREATE TABLE <table name> (
+    <column name> <data type> <attributes>
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    <continue filling in table>
+);
+
+Drop a table using DROP TABLE <table name>;
+
 
 
 
