@@ -3,19 +3,20 @@ DROP TABLE IF EXISTS courses;
 
 CREATE TABLE courses (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name VARCHAR NOT NULL UNIQUE
+    name VARCHAR(20) NOT NULL UNIQUE
 );
-
+-- One Course has Many Foods
 CREATE TABLE foods (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR UNIQUE NOT NULL,
     temp VARCHAR(10),
     kcal INTEGER,
     price DECIMAL(4,2) NOT NULL,
-    course VARCHAR(20) NOT NULL,
+    course_id INTEGER REFERENCES courses(id) NOT NULL,
     foodnicity VARCHAR(100) NOT NULL,
     food_group VARCHAR(100),
     healthy BOOLEAN
+    -- FOREIGN KEY (course_id) REFERENCES courses(id)
 );
 
 INSERT INTO courses (name)
