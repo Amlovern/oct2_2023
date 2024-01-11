@@ -41,3 +41,23 @@ OFFSET 1;
 SELECT DISTINCT temp FROM foods;
 
 SELECT name, price * .7 AS '30% off' FROM foods;
+
+SELECT foods.name AS 'food', foodnicitys.name AS 'foodnicity', price, healthy, food_groups.name AS 'food group', courses.name AS 'course'
+FROM foodnicitys
+JOIN foods ON (foodnicitys.id = foods.foodnicity_id)
+JOIN food_groups ON (food_groups.id = foods.food_group_id)
+JOIN course_foods ON (course_foods.food_id = foods.id)
+JOIN courses ON (courses.id = course_foods.course_id)
+WHERE foodnicitys.name = 'mexican';
+
+
+-- Select every id and price where food is healthy and the price is descending from course_foods, foodnicity, foods, food_groups. Order by food group, health, and then price.
+
+
+SELECT foods.id AS 'food', price, foodnicitys.id AS 'foodnicity', food_groups.id AS 'food group', course_foods.id AS 'join table'
+FROM foods
+JOIN foodnicitys ON (foodnicitys.id = foods.foodnicity_id)
+JOIN food_groups ON (food_groups.id = foods.food_group_id)
+JOIN course_foods ON (course_foods.food_id = foods.id)
+WHERE healthy = 1
+ORDER BY food_group_id, healthy, price DESC;
