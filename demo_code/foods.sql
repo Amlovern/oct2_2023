@@ -1,7 +1,7 @@
 -- This ensures that SQLite enforces FOREIGN KEY constraints
 PRAGMA foreign_keys = 1;
 
-DROP TABLE IF EXISTS meal_foods;
+DROP TABLE IF EXISTS course_foods;
 DROP TABLE IF EXISTS foods;
 DROP TABLE IF EXISTS courses;
 DROP TABLE IF EXISTS food_groups;
