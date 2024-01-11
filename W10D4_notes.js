@@ -16,6 +16,12 @@ There are a couple ways to establish a FK in a CREATE TABLE command
     2) We can combine that on the column info:
         <column name> INTEGER REFERENCES <other table>(id)
 
+What about deleting?
+    On Delete Cascade allows us to resolve this
+    If we don't want those sub-records to be deleted, we have a fix for that too
+        On Delete Set Null
+        Note that we cannot do this if the column has NOT NULL
+
 
 
 

@@ -18,3 +18,5 @@ VALUES
 
 UPDATE foods SET price = 5
 WHERE course = 'breakfast';
+
+DELETE FROM courses WHERE name="snack";
