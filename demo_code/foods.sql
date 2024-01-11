@@ -1,15 +1,10 @@
--- Table foods {
---   id INTEGER
---   name VARCHAR
---   temp VARCHAR(10)
---   kcal INTEGER
---   price DECIMAL(4,2)
---   course VARCHAR(20)
---   foodnicity VARCHAR(100)
---   food_group VARCHAR(100)
---   healthy BOOLEAN
--- }
 DROP TABLE IF EXISTS foods;
+DROP TABLE IF EXISTS courses;
+
+CREATE TABLE courses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR NOT NULL UNIQUE
+);
 
 CREATE TABLE foods (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,6 +17,14 @@ CREATE TABLE foods (
     food_group VARCHAR(100),
     healthy BOOLEAN
 );
+
+INSERT INTO courses (name)
+VALUES
+('breakfast'),
+('lunch'),
+('supper'),
+('dessert'),
+('snack');
 
 INSERT INTO foods (name, temp, kcal, price, course, foodnicity, food_group, healthy)
 VALUES
