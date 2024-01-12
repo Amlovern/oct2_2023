@@ -61,3 +61,32 @@ JOIN food_groups ON (food_groups.id = foods.food_group_id)
 JOIN course_foods ON (course_foods.food_id = foods.id)
 WHERE healthy = 1
 ORDER BY food_group_id, healthy, price DESC;
+
+SELECT AVG(price) FROM foods;
+
+SELECT COUNT(*) FROM foods;
+
+SELECT kcal FROM foods
+ORDER BY kcal DESC
+LIMIT 1;
+
+SELECT MAX(kcal) FROM foods;
+
+SELECT MIN(kcal) FROM foods;
+
+SELECT TOTAL(price) FROM foods;
+SELECT SUM(price) FROM foods;
+
+SELECT MAX(healthy), * FROM foods;
+
+SELECT AVG(kcal) FROM foods
+WHERE healthy = true;
+
+SELECT food_group_id, AVG(kcal)
+FROM foods
+GROUP BY food_group_id;
+
+SELECT food_group_id, AVG(kcal)
+FROM foods
+GROUP BY food_group_id
+HAVING AVG(kcal) <= 500;
