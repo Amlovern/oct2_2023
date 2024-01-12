@@ -42,5 +42,18 @@ At this point, we have talked about all of the SQL keywords:
     LIMIT
     OFFSET
 
+Subquery
+    Kind of like helper functions in SQL
+    Can generally be used to replace JOIN ON
+
+    When writing a subquery, we should ask 2 questions:
+        What information do I have?
+        What information am I looking for?
+
+    The purpose of a subquery is to return some information that the outer query can use
+
+    If the subquery returns multiple records, we can use the IN keyword to handle that
+    Subqueries can be used in any SQL context
+
 
 */

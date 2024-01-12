@@ -90,3 +90,25 @@ SELECT food_group_id, AVG(kcal)
 FROM foods
 GROUP BY food_group_id
 HAVING AVG(kcal) <= 500;
+
+SELECT * FROM foods
+JOIN food_groups ON (food_groups.id = foods.food_group_id)
+WHERE food_groups.name = 'protein';
+
+SELECT * FROM foods
+WHERE food_group_id IN (
+    SELECT id, name FROM food_groups
+    WHERE name IN ('protein', 'vegetable')
+);
+
+SELECT * FROM food_groups
+WHERE id = (
+    SELECT food_group_id FROM foods
+    WHERE id = (
+        SELECT food_id FROM course_foods
+        WHERE course_id = (
+            SELECT id FROM courses
+            WHERE name = 'breakfast'
+        )
+    )
+);
