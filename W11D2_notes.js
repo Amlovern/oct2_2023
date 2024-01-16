@@ -72,4 +72,39 @@ When a malicious users directly inputs SQL into the backend of an API
 Biggest takeaways so far:
     How to benchmark queries and how to recognize N+1 queries
 
+
+
+Sequelize
+
+To start off, we need to install a couple packages
+    npm install sequelize
+    npm install sequelize-cli
+Then we need to initialize Sequelize
+    npx sequelize init
+
+This command creates a bunch of folders and files for 
+    We are replacing the entirety of the database.js file
+
+The migrations file's job is to make changes to our DB
+Seeder files are filled with our initial DB data
+Model files are class representations of our tables
+
+The .sequelizerc file tells Sequelize how to handle the file structure upon initialization
+
+In the config/database.js file:
+    storage: Tells Sequelize where our actual DB is
+    dialect: Tells Sequelize which RDBMS we are using
+    benchmark: Basically turns .timer on by default
+    logQueryParameters: Allows us to see the values when we make changes to our DB
+    typeValidation: Helps us enforce data types on our tables
+    logging: Defaults to true and prints our SQL to the terminal
+
+
+
+
+
+
+
+
+
 */
