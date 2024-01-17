@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Foodnicities', {
+    await queryInterface.createTable('Food', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,6 +13,25 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true
+      },
+      temp: {
+        type: Sequelize.STRING(10)
+      },
+      kcal: {
+        type: Sequelize.INTEGER
+      },
+      price: {
+        type: Sequelize.DECIMAL(4,2),
+        allowNull: false
+      },
+      foodnicityId: {
+        type: Sequelize.INTEGER
+      },
+      foodGroupId: {
+        type: Sequelize.INTEGER
+      },
+      healthy: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -27,6 +46,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Foodnicities');
+    await queryInterface.dropTable('Food');
   }
 };
