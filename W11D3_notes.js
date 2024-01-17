@@ -40,6 +40,16 @@ If we want our seeders to check against model validations:
 
     bulkCreate instead of bulkInsert is highly recommended
 
+Using migrations for something other than creating tables
+    IF we change an existing migration file, the migration must be rolled back in order for the changes to take effect. This would wipe that table, losing all user data.
+
+We DO NOT want to update migrated migrations, instead we want to create new migrations for the changes we want to make.
+
+We need to start by creating a new migration file
+    npx sequelize migration:generate --name <descriptive name>
+
+If we set allowNull: false to a new column, we run into an error
+    We can get around this by setting a defaultValue property
 
 
 */

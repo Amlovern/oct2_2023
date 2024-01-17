@@ -14,6 +14,11 @@ module.exports = {
         allowNull: false,
         unique: true
       },
+      countryOfOrigin: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: 'USA'
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

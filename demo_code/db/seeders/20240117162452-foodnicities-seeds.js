@@ -26,8 +26,7 @@ module.exports = {
       {name: 'mexican'},
       {name: 'asian'},
       {name: 'european'},
-      {name: 'southern'},
-      {name: 'Testing'}
+      {name: 'southern'}
     ], {validate: true})
   },
 
