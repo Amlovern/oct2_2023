@@ -33,5 +33,23 @@ router.get('/:id', async (req, res) => {
     res.json(foodnicity);
 });
 
+router.post('/build', async (req, res) => {
+    const { name } = req.body;
+
+    const newFoodnicity = Foodnicity.build({name});
+    await newFoodnicity.validate();
+    await newFoodnicity.save();
+
+    res.json(newFoodnicity);
+});
+
+router.post('/create', async (req, res) => {
+    const { name } = req.body;
+
+    const newFoodnicity = await Foodnicity.create({name});
+
+    res.json(newFoodnicity)
+});
+
 
 module.exports = router;
