@@ -29,7 +29,16 @@ npx dotenv sequelize db:seed:all
 Database reset script:
     "dbreset": "npx dotenv sequelize db:seed:undo:all && npx dotenv sequelize db:migrate:undo:all && npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all"
 
+Adding additional validations to our models
 
+If we want our seeders to check against model validations:
+    We utilize the model's built-in bulkCreate method
+    First we import the model into the seed file
+    await <model>.bulkCreate([
+        <seed objects>
+    ], {validate: true})
+
+    bulkCreate instead of bulkInsert is highly recommended
 
 
 
