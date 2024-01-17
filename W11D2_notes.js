@@ -99,8 +99,45 @@ In the config/database.js file:
     typeValidation: Helps us enforce data types on our tables
     logging: Defaults to true and prints our SQL to the terminal
 
+File Types
+    Migrations
+        For making changes to the DB structure
+        Table names = Capitalized (PascalCase) and Plural
+            Table: Users
+        CLI commands:
+            npx dotenv sequelize db:migrate
+                Run all migration files that haven't been ran
+            npx dotenv sequelize db:migrate:undo
+                Rolls back the most recent migration
+            npx dotenv sequelize db:migrate:undo:all
+                Rolls back all migrations
+        Important Notes:
+            Every migration file we create has 2 parts: an "up" and a "down"
+                The "down" should always directly undo the "up"
+            Migrations don't only create/edit our tables, they also act as a version control for our DB
+                Because of this, we rarely make changes to our migrations after they have been pushed to the DB
+            All of our normal conditions like Unique or Not Null are represented as key-value pairs in the column objects
+            The Sequelize Meta table's job is to track the migration files that have been executed
+    Models
+        Class representations of each table, with built-in query methods
+        Model names = Capitalized (PascalCase) and SINGULAR
+            Model: User
+        CLI commands:
+            npx sequelize model:generate --name <name> --attributes <table attributes>
+        Important Notes:
+            Sequelize calls columns "attributes"
+            We do not need to add an 'id' attribute. Sequelize will add that for us for models that we generate.
+            We will be switching from snake_case to camelCase for our column names
+            When we generate a model, Sequelize will automatically generate a corresponding migration file
+            Make sure that any changes we make to migrations, such as adding constraints, we need to add those changes to the model as well
+            Making changes to our model does not mean we need to run any additional commands
+    Seeders
+        For inserting starter data into tables
 
-
+There are 2 types of commands:
+    Commands that create files
+    Commands that interact with the DB
+        These require us to add "dotenv" to the command
 
 
 
