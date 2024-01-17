@@ -52,4 +52,41 @@ If we set allowNull: false to a new column, we run into an error
     We can get around this by setting a defaultValue property
 
 
+There are a variety of query methods built into our models
+    findAll
+        Useful when we want multiple records
+        Always returns an array
+    findOne
+        Useful when we want to find just a single record
+    findByPk
+        Also useful when finding just a single record
+        Basically a findOne, but shortcuts to searching via Primary Key
+
+To use these methods, we have to follow a couple steps:
+    1. Import the model into the router file
+    2. Dispath the method on the model, setting the return to a variable
+        Make sure that we await this fetch
+
+By default, Sequelize will do SELECT *
+If we want to select certain columns, we need to add something to our query
+    All of the queries take in an object
+    We can use the attribute property to select certain columns
+        The attributes property takes in an array of the cols we want
+
+To add a WHERE statement, we add a where property to the query that takes in a nested object that has a key of the column and value of what we want to look for
+If we target a column that isn't UNIQUE in a findOne, it will add LIMIT 1 to the SQL
+
+In a .findByPk, the first arg isn't an obj, but instead the PK
+
+If we want to add ORDER BY, that is another option in our query object
+    order: [[<col>, 'ASC' || 'DESC']]
+    Note that the arg for order is a 2D array
+    We can order by multiple columns by adding more inner arrays
+
+If we want to use LIKE in our query, we can do so
+    This is done using the Op object built into Sequelize
+
+
+
+
 */
