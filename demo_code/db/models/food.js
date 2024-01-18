@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'foodId',
         otherKey: 'courseId'
       });
+
+      Food.belongsTo(models.FoodGroup, {
+        foreignKey: 'foodGroupId'
+      });
     }
   }
   Food.init({

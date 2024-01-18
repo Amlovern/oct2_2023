@@ -32,8 +32,25 @@ Associations
             otherKey: <FK to join from join table to other table>
         })
 
+Implementing these Relationships into Express
+In our query object, we need to add an include property that points to the model we want to join
 
+Since we are referencing another model, we need to make sure and add that model to our imports
+     include: <model name>
+We can add multiple models to the join by pointing the include property to an array
+    include: [<model 1>, <model 2>]
+We can also point include to an object or an array of objects
+    include: {
+        model: <model name>
+    }
 
+If we don't wany any of the info from our join table, we can add a through property to the includes object.
+    include: {
+        model: <model name>,
+        through: {
+            attributes: []
+        }
+    }
 
 
 
