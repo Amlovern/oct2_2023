@@ -51,5 +51,29 @@ router.post('/create', async (req, res) => {
     res.json(newFoodnicity)
 });
 
+router.put('/update/:id', async (req, res) => {
+    const { name } = req.body;
+    const foodnicityId = req.params.id;
+
+    const foodnicity = await Foodnicity.findByPk(foodnicityId);
+
+    // if (name !== undefined) {
+    //     foodnicity.name = name;
+    // }
+    foodnicity.name = name || foodnicity.name
+    await foodnicity.save();
+
+    res.json(foodnicity);
+});
+
+router.delete('/:id', async (req, res) => {
+    const foodnicityId = req.params.id;
+    const foodnicity = await Foodnicity.findByPk(foodnicityId);
+
+    await foodnicity.destroy();
+
+    res.json(foodnicity);
+});
+
 
 module.exports = router;

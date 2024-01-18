@@ -24,7 +24,22 @@ app.get('/puppies', async (req, res, next) => {
 // Use these values to BUILD a new Puppy in the database.
 // Respond to the request by sending a success message
 app.post('/puppies/build', async (req, res, next) => {
-    // Your code here 
+    const { name, ageYrs, breed, weightLbs, microchipped } = req.body;
+
+    const newPuppy = Puppy.build({
+        name,
+        ageYrs,
+        breed,
+        weightLbs,
+        microchipped
+    });
+
+    await newPuppy.save();
+
+    res.json({
+        message: 'Puppy successfully built',
+        data: newPuppy
+    });
 })
 
 // STEP 2
@@ -33,7 +48,20 @@ app.post('/puppies/build', async (req, res, next) => {
 // Use these values to CREATE a new Puppy in the database.
 // Respond to the request by sending a success message
 app.post('/puppies/create', async (req, res, next) => {
-    // Your code here 
+    const { name, ageYrs, breed, weightLbs, microchipped } = req.body;
+
+    const newPuppy = await Puppy.create({
+        name,
+        ageYrs,
+        breed,
+        weightLbs,
+        microchipped
+    });
+
+    res.json({
+        message: 'Puppy successfully created',
+        data: newPuppy
+    });
 })
 
 
@@ -46,7 +74,7 @@ app.get('/', (req, res) => {
 
 // Set port and listen for incoming requests - DO NOT MODIFY
 if (require.main === module) {
-    const port = 8000;
+    const port = 5000;
     app.listen(port, () => console.log('Server is listening on port', port));
 } else {
     module.exports = app;
