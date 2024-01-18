@@ -11,11 +11,19 @@ module.exports = {
       },
       foodId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'Food',
+          key: 'id'
+        }
       },
       courseId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'Courses',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
