@@ -25,10 +25,20 @@ module.exports = {
         allowNull: false
       },
       foodnicityId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Foodnicities',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       foodGroupId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'FoodGroups',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       healthy: {
         type: Sequelize.BOOLEAN
