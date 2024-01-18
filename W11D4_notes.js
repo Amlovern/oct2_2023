@@ -53,5 +53,16 @@ If we don't wany any of the info from our join table, we can add a through prope
     }
 
 
+Association Methods
+    Getter Method
+        After querying a table, we automatically get a method to get a related table's information
+        Basically exists to enable lazy loading
+        Getter method will be either plural or singular based on the relationship
+    Create Method
+        After querying a table, we can create a record for a related table
+        We don't need to add the value for the related FK
+    Add Method
+        After querying a table, in a Many to Many relationship, allows us to add a record to the join table
+
 
 */
