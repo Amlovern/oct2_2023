@@ -7,6 +7,8 @@ const { Food, FoodGroup } = require('./db/models');
 
 app.use(express.json());
 
+app.use('/styling', express.static('assets/css'));
+
 app.use('/foodnicity', foodnicityRouter);
 app.use('/food', foodRouter);
 
