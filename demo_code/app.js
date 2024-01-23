@@ -74,5 +74,30 @@ app.get('/aggregates', async (req, res) => {
     })
 })
 
+app.get('/pagination', async (req, res) => {
+    let { size, page } = req.query;
+    let paginationObj = {};
+
+    if (!page) page = 1;
+    if (!size) size = 5;
+
+    paginationObj.limit = size;
+    paginationObj.offset = size * (page - 1);
+    
+    if (parseInt(size) <= 0 || page <= 0) {
+        delete paginationObj.limit;
+        delete paginationObj.offset;
+        // paginationObj = {};
+    };
+
+    const food = await Food.findAll({
+      attributes: ['name', 'id'],
+      order: [['id'], ['name']],
+      ...paginationObj
+    });
+    
+    res.json(food);
+})
+
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
