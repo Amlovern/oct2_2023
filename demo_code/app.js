@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
+const { Op } = require('sequelize');
 const foodnicityRouter = require('./routes/foodnicity');
 const foodRouter = require('./routes/food');
 const { Food, FoodGroup } = require('./db/models');
@@ -96,6 +97,47 @@ app.get('/pagination', async (req, res) => {
       ...paginationObj
     });
     
+    res.json(food);
+});
+
+app.get('/search', async (req, res) => {
+    const { name, maxPrice, foodGroup } = req.query;
+    const queryObj = {
+        where: {},
+        include: []
+    };
+
+    // if (name) {
+    //     queryObj.where = {
+    //         name: {
+    //             [Op.substring]: name
+    //         }
+    //     }
+    // };
+
+    if (name) {
+        queryObj.where.name = {
+            [Op.substring]: name
+        }
+    };
+
+    if (maxPrice) {
+        queryObj.where.price = {
+                [Op.lte]: maxPrice
+            }
+    };
+
+    if (foodGroup) {
+        queryObj.include.push({
+            model: FoodGroup,
+            where: {
+                name: foodGroup
+            }
+        })
+    };
+
+    const food = await Food.findAll({...queryObj});
+
     res.json(food);
 })
 
