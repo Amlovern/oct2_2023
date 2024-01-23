@@ -15,8 +15,12 @@ How do we handle these edge cases?
             This is highly repetitive
         Instead, we can create a pagination object and set our limit and offset properties inside that object
 
+Search Parameters
+    We can check that a query string has been passed in, and then assign that to a where clause
 
-
+    Should take in a name query string and match partial names in the db
+    Should take in a maxPrice query string to filter our more expensive foods
+    Should take in a foodGroup query string to find all foods associated with the provided food group
 
 
 */
