@@ -64,4 +64,14 @@ JWTs
     To verify a token:
         jwt.verify(<token>, <secretKey>)
 
+
+Bcrypt
+    First we have to import by require('bcryptjs');
+
+    The hash provided consists of algo, cost, salt (22 chars), and hash
+
+    The cost factor tells bcrypt how many times to hash the password
+    We don't want to set the cost factor too high
+        The recommendation is around 12-13
+
 */
