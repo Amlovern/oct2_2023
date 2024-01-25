@@ -22,6 +22,12 @@ router.get('/', async (req, res) => {
     res.json(allFood)
 });
 
+router.get('/scopes', async (req, res) => {
+    const allFood = await Food.scope(['namePriceCal', 'defaultScope', {method: ['maxCal', 700]}, {method: ['includeFoodGroup']}]).findAll();
+    
+    res.json(allFood);
+});
+
 router.get('/:foodnicity', async (req, res) => {
     const allFood = await Food.findAll({
         include: {
@@ -33,8 +39,7 @@ router.get('/:foodnicity', async (req, res) => {
     });
 
     res.json(allFood);
-})
-
+});
 
 
 
