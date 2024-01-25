@@ -1,7 +1,9 @@
 'use strict';
 const {
-  Model
+  Model,
+  Op
 } = require('sequelize');
+// const { FoodGroup } = require('./index');
 module.exports = (sequelize, DataTypes) => {
   class Food extends Model {
     /**
@@ -43,6 +45,35 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Food',
+    defaultScope: {
+      // attributes: ['id', 'name', 'temp', 'kcal', 'price', 'foodnicityId', 'foodGroupId', 'healthy']
+      attributes: {
+        exclude: ['createdAt', 'updatedAt']
+      }
+      // attributes: ['id', 'name']
+    },
+    scopes: {
+      namePriceCal: {
+        attributes: ['name', 'price', 'kcal', 'createdAt', 'updatedAt']
+      },
+      maxCal(cal) {
+        return {
+          where: {
+            kcal: {
+              [Op.lte]: cal
+            }
+          }
+        }
+      },
+      includeFoodGroup() {
+        const { FoodGroup } = require('./index');
+        return {
+          include: {
+            model: FoodGroup
+          }
+        }
+      }
+    }
   });
   return Food;
 };
