@@ -21,6 +21,40 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Instrument',
+    defaultScope: {
+      attributes: {
+        exclude: ['createdAt', 'updatedAt']
+      }
+    },
+    scopes: {
+      keyboard: {
+        where: {
+          type: 'keyboard'
+        }
+      },
+      string: {
+        where: {
+          type: 'string'
+        }
+      },
+      woodwind: {
+        where: {
+          type: 'woodwind'
+        }
+      },
+      addStoreData(storeId) {
+        const { Store } = require('./index');
+        return {
+          where: {
+            storeId // storeId: storeId
+          },
+          include: {
+            model: Store
+          },
+          order: [['name']]
+        }
+      }
+    }
   });
   return Instrument;
 };
